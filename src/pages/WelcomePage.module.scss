@@ -1,0 +1,62 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.welcome_container {
+  background-image: url('../assets/peakpx.jpg');
+  //   background-size: cover;
+  background-size: 100vw calc(100vh - 50px);
+
+  height: calc(100vh - 50px);
+
+  color: $light;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .welcome_desc_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 20px;
+    border-radius: 10px;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.5);
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .welcome_title {
+  }
+
+  .welcome_desc {
+  }
+
+  .welcome_desc_color {
+    color: $orange;
+    font-weight: bold;
+  }
+
+  .welcome_btn {
+    background-color: $red;
+    padding: 16px 60px;
+
+    color: $light;
+
+    border: none;
+    border-radius: 30px;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+  }
+}

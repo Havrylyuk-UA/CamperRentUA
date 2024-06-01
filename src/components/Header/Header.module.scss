@@ -1,0 +1,35 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .logo {
+    width: 100px;
+    height: 100px;
+
+    position: absolute;
+    top: 0;
+
+    z-index: 1;
+  }
+
+  .header_table {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+
+    margin-left: auto;
+
+    padding: 16px 15px;
+  }
+
+  .active {
+    color: $red;
+    border-bottom: 1px solid $red;
+  }
+}
