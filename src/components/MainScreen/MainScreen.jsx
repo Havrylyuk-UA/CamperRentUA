@@ -1,4 +1,4 @@
-import Card from '../Card/Card.jsx';
+import Card from './Card/Card.jsx';
 import styles from './MainScreen.module.scss';
 import data from '../../assets/data.json';
 

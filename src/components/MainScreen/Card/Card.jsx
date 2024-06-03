@@ -1,5 +1,5 @@
 import styles from './Card.module.scss';
-import sprite from '../../assets/sprite.svg';
+import sprite from '../../../assets/sprite.svg';
 
 const Card = ({ camper }) => {
   const renderCategoryItem = (svg, text) => {

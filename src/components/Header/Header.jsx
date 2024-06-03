@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import clsx from 'clsx';
-import Logo from '../Logo/Logo';
+import Logo from './Logo/Logo.jsx';
 
 const Header = () => {
   const location = useLocation();
