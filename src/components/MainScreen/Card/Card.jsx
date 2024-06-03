@@ -1,17 +1,15 @@
 import styles from './Card.module.scss';
 import sprite from '../../../assets/sprite.svg';
 
-const Card = ({ camper }) => {
-  const renderCategoryItem = (svg, text) => {
-    return (
-      <div className={styles.cat_item}>
-        <svg className={styles[`icon_${svg}`]} width="20" height="20">
-          <use xlinkHref={`${sprite}#icon-${svg}`}></use>
-        </svg>
-        {text}
-      </div>
-    );
-  };
+const Card = ({ camper, showModal }) => {
+  const renderCategoryItem = (svg, text) => (
+    <div className={styles.cat_item}>
+      <svg className={styles[`icon_${svg}`]} width="20" height="20">
+        <use xlinkHref={`${sprite}#icon-${svg}`}></use>
+      </svg>
+      {text}
+    </div>
+  );
 
   return (
     <div className={styles.card}>
@@ -59,7 +57,11 @@ const Card = ({ camper }) => {
           {camper.details.airConditioner > 0 && renderCategoryItem('ac', 'AC')}
         </div>
         <div>
-          <button type="button" className={styles.btn}>
+          <button
+            type="button"
+            className={styles.btn}
+            onClick={() => showModal(camper)}
+          >
             Show more
           </button>
         </div>

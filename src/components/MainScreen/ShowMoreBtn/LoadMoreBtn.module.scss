@@ -1,0 +1,27 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.btn {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+
+  border: 1px solid rgba(71, 84, 103, 0.2);
+  border-radius: 200px;
+  padding: 16px 32px;
+  width: 145px;
+  height: 56px;
+
+  margin: 33px auto 100px auto;
+
+  cursor: pointer;
+
+  background-color: inherit;
+
+  &:hover,
+  &:focus {
+    border-color: $red;
+  }
+}

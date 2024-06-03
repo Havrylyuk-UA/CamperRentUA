@@ -1,0 +1,145 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.modal_backdrop {
+  background-color: rgba(17, 18, 19, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  transition: opacity 1s;
+  user-select: none;
+  z-index: 1001;
+  @include appear-animation-opacity();
+
+  .card_container {
+    width: 982px;
+    border-radius: 20px;
+    padding: 40px;
+
+    background-color: #fff;
+
+    margin: 0 auto;
+    margin-top: 40px;
+
+    .about {
+      margin-bottom: 24px;
+    }
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 10px;
+
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 125%;
+
+      .cross {
+        cursor: pointer;
+        stroke: #000;
+      }
+    }
+
+    .rat_loc {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-start;
+      align-items: center;
+
+      margin-bottom: 16px;
+
+      .rating {
+        display: flex;
+        gap: 4px;
+
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        text-decoration: underline;
+      }
+
+      .star {
+        fill: $orange;
+        stroke: $orange;
+      }
+
+      .location {
+        display: flex;
+        gap: 4px;
+
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+      }
+
+      .map {
+        stroke: #000;
+        fill: none;
+      }
+    }
+
+    .price {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 125%;
+    }
+
+    .car_info {
+      height: 450px;
+      overflow-y: scroll;
+      margin-bottom: 44px;
+    }
+
+    .gallery {
+      max-width: 902px;
+      height: 310px;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .gallery_img {
+      width: 290px;
+      height: 310px;
+    }
+
+    .gallery_img img {
+      object-fit: cover;
+      border-radius: 10px;
+      object-position: top;
+    }
+
+    .desc {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+      color: $dark-light;
+    }
+
+    .btn {
+      display: flex;
+      gap: 40px;
+
+      border: none;
+      background-color: inherit;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 120%;
+      width: 85px;
+      height: 24px;
+      margin-bottom: 24px;
+    }
+
+    .line {
+      width: 902px;
+      border: 1px solid rgba(16, 24, 40, 0.2);
+    }
+  }
+}

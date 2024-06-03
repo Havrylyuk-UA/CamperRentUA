@@ -11,3 +11,16 @@
     }
   }
 }
+
+@mixin appear-animation-opacity($duration: 0.25s) {
+  animation: appear $duration ease forwards;
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
