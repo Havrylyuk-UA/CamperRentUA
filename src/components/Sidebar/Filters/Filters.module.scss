@@ -1,0 +1,65 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.container {
+  width: 360px;
+  margin-bottom: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  .filters {
+    margin-bottom: 14px;
+  }
+
+  .equipment {
+    margin-bottom: 24px;
+  }
+
+  .line {
+    width: 100%;
+    border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+    margin-bottom: 24px;
+  }
+
+  .filter_equipment {
+    fill: none;
+    stroke: #000;
+  }
+
+  form {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+
+    width: 112px;
+    height: 95px;
+
+    border: 1px solid rgba(16, 24, 40, 0.2);
+    border-radius: 10px;
+
+    cursor: pointer;
+  }
+
+  .checked {
+    border-color: $red;
+  }
+
+  input[type='checkbox'] {
+    display: none;
+  }
+}

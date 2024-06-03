@@ -1,0 +1,61 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.container {
+  width: 360px;
+  margin-bottom: 64px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  .type {
+    margin-bottom: 24px;
+  }
+
+  .line {
+    width: 100%;
+    border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+    margin-bottom: 24px;
+  }
+
+  .label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+
+    width: calc((360px - 20px) / 3);
+    height: 95px;
+
+    border: 1px solid rgba(16, 24, 40, 0.2);
+    border-radius: 10px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+
+    cursor: pointer;
+  }
+
+  form {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .checked {
+    border-color: red;
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+}

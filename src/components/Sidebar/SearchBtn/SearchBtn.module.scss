@@ -1,0 +1,21 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.search_btn {
+  margin: 0 auto;
+  padding: 16px 60px;
+
+  color: #fff;
+  background-color: $red;
+
+  border: none;
+  border-radius: 200px;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: $red-hover;
+  }
+}

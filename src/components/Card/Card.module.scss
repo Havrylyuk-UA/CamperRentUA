@@ -1,0 +1,192 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.card {
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 20px;
+  padding: 24px;
+  width: 888px;
+  height: 358px;
+
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+
+  .card_img {
+    width: 290px;
+    height: 310px;
+    overflow: hidden;
+  }
+
+  .card_img img {
+    object-fit: cover;
+    border-radius: 10px;
+    object-position: top;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 525px;
+
+    .head {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .name {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 125%;
+      }
+
+      .price {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 125%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        margin-left: auto;
+      }
+
+      .heart {
+        fill: none;
+        stroke: #000;
+
+        cursor: pointer;
+
+        &:active {
+          fill: red;
+          stroke: red;
+        }
+      }
+    }
+
+    .rat_loc {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+
+      .rating {
+        display: flex;
+        gap: 4px;
+
+        text-decoration: underline;
+        .star {
+          fill: $orange;
+          stroke: $orange;
+        }
+      }
+
+      .location {
+        display: flex;
+        gap: 4px;
+        .map {
+          fill: none;
+          stroke: #000;
+        }
+      }
+    }
+
+    .desc {
+      width: 525px;
+      height: 24px;
+      overflow: hidden;
+      white-space: nowrap;
+
+      color: $dark-light;
+
+      margin-bottom: 24px;
+
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+    }
+
+    .desc p {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 526px;
+      height: 96px;
+
+      gap: 8px;
+      margin-bottom: 24px;
+
+      .cat_item {
+        padding: 12px 18px;
+        border-radius: 100px;
+
+        background-color: $grey;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 125%;
+
+        .icon_adults {
+          stroke: #000;
+        }
+      }
+
+      .icon_automatic {
+        fill: none;
+
+        stroke: #000;
+      }
+
+      .icon_petrol {
+        stroke: #000;
+      }
+
+      .icon_kitchen {
+        fill: none;
+
+        stroke: #000;
+      }
+
+      .icon_beds {
+        fill: none;
+
+        stroke: #000;
+      }
+
+      .icon_ac {
+        stroke: #000;
+      }
+    }
+
+    .btn {
+      border-radius: 200px;
+      padding: 16px 40px;
+      width: 166px;
+      height: 56px;
+
+      border: none;
+
+      color: #fff;
+      background-color: $red;
+
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        background-color: $red-hover;
+      }
+    }
+  }
+}

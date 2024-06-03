@@ -1,16 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../../assets/camper_logo.png';
 import styles from './Header.module.scss';
 import clsx from 'clsx';
+import Logo from '../Logo/Logo';
 
 const Header = () => {
   const location = useLocation();
 
   return (
     <nav className={styles.header}>
-      <Link to="/" className={styles.logo}>
-        <img src={logo} alt="logo" />
-      </Link>
+      <Logo />
       <ul className={styles.header_table}>
         <li>
           <Link

@@ -4,16 +4,15 @@
 
 .welcome_container {
   background-image: url('../assets/peakpx.jpg');
-  //   background-size: cover;
-  background-size: 100vw calc(100vh - 50px);
+  background-size: 100vw 100vh;
 
-  height: calc(100vh - 50px);
-
+  height: 100vh;
   color: $light;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 50px;
 
   .welcome_desc_cont {
     display: flex;

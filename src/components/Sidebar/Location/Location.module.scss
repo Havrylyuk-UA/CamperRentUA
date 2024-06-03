@@ -1,0 +1,48 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 360px;
+  gap: 8px;
+
+  color: rgba(16, 24, 40, 0.6);
+
+  .location_input {
+    display: flex;
+    align-items: center;
+
+    background-color: $grey;
+
+    padding: 18px;
+    width: 100%;
+    height: 56px;
+    border-radius: 10px;
+
+    margin-bottom: 32px;
+
+    &:focus-within {
+      .location_icon {
+        stroke: $dark;
+      }
+    }
+  }
+
+  .location_icon {
+    margin-right: 5px;
+    fill: none;
+    stroke: rgba(16, 24, 40, 0.6);
+  }
+
+  input[type='text'] {
+    border: none;
+    outline: none;
+    flex: 1;
+    background-color: inherit;
+  }
+}
