@@ -1,7 +1,10 @@
 import styles from './Card.module.scss';
 import sprite from '../../../assets/sprite.svg';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getCardById } from '../../../redux/operations';
 
-const Card = ({ camper, showModal }) => {
+const Card = ({ camper }) => {
   const renderCategoryItem = (svg, text) => (
     <div className={styles.cat_item}>
       <svg className={styles[`icon_${svg}`]} width="20" height="20">
@@ -10,6 +13,12 @@ const Card = ({ camper, showModal }) => {
       {text}
     </div>
   );
+
+  const dispatch = useDispatch();
+
+  const getDetails = cardId => {
+    dispatch(getCardById(cardId));
+  };
 
   return (
     <div className={styles.card}>
@@ -60,9 +69,11 @@ const Card = ({ camper, showModal }) => {
           <button
             type="button"
             className={styles.btn}
-            onClick={() => showModal(camper)}
+            onClick={() => getDetails(camper._id)}
           >
-            Show more
+            <NavLink to={`${camper._id}`} className={styles.btn_link}>
+              Show more
+            </NavLink>
           </button>
         </div>
       </div>

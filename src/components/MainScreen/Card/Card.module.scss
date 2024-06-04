@@ -172,6 +172,16 @@
 
     .btn {
       border-radius: 200px;
+      border: none;
+      background-color: inherit;
+    }
+
+    .btn_link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 200px;
       padding: 16px 40px;
       width: 166px;
       height: 56px;

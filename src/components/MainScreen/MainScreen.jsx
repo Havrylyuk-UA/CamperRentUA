@@ -1,33 +1,40 @@
+import { useDispatch, useSelector } from 'react-redux';
 import Card from './Card/Card.jsx';
 import styles from './MainScreen.module.scss';
-import data from '../../assets/data.json';
 import LoadMoreBtn from './ShowMoreBtn/LoadMoreBtn.jsx';
-import PopUp from '../PopUp/PopUp.jsx';
-import { useState } from 'react';
+import { selectCards } from '../../redux/selectors.js';
+import { useEffect, useState } from 'react';
+import { fetchCard } from '../../redux/operations.js';
 
 const MainScreen = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [cardDetails, setCardDetails] = useState();
+  const data = useSelector(selectCards);
 
-  const showModal = camper => {
-    setModalOpen(true);
-    setCardDetails({
-      camper,
-    });
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 4,
+  });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCard(pagination));
+  }, [dispatch, pagination]);
+
+  const handleLoadMore = () => {
+    const limit = (pagination.limit += 4);
+    setPagination({ ...pagination, limit });
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
-    setCardDetails();
-  };
+  const endOfCard = data.length % pagination.limit === 0;
 
   return (
     <div className={styles.container}>
-      {data.map(camper => (
-        <Card key={camper._id} camper={camper} showModal={showModal} />
-      ))}
-      <LoadMoreBtn />
-      {modalOpen && <PopUp close={closeModal} camper={cardDetails} />}
+      <div className={styles.cards}>
+        {data.map(camper => (
+          <Card key={camper._id} camper={camper} />
+        ))}
+      </div>
+      {endOfCard && <LoadMoreBtn onClick={handleLoadMore} />}
     </div>
   );
 };
