@@ -15,7 +15,8 @@ const initialState = {
   favorite: [],
   details: {},
   isLoading: false,
-  isOpen: false,
+  limit: 4,
+  page: 1,
   error: null,
 };
 
@@ -23,8 +24,8 @@ export const cardSlice = createSlice({
   name: 'adverts',
   initialState,
   reducers: {
-    closeDetails(state) {
-      state.isOpen = false;
+    addLimit(state) {
+      state.limit += 4;
     },
     addFavorite(state, { payload }) {
       state.favorite = [...state.favorite, payload];
@@ -62,6 +63,6 @@ export const cardSlice = createSlice({
   },
 });
 
-export const { addFavorite, removeFavorite } = cardSlice.actions;
+export const { addFavorite, removeFavorite, addLimit } = cardSlice.actions;
 
 export default cardSlice.reducer;

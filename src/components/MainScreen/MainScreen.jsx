@@ -2,28 +2,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from './Card/Card.jsx';
 import styles from './MainScreen.module.scss';
 import LoadMoreBtn from './ShowMoreBtn/LoadMoreBtn.jsx';
-import { selectCards, selectFavorite } from '../../redux/selectors.js';
-import { useEffect, useState } from 'react';
+import {
+  selectCards,
+  selectFavorite,
+  selectLimit,
+  selectPage,
+} from '../../redux/selectors.js';
+import { useEffect } from 'react';
 import { fetchCard } from '../../redux/operations.js';
-import { addFavorite, removeFavorite } from '../../redux/cardsSlice.js';
+import {
+  addFavorite,
+  addLimit,
+  removeFavorite,
+} from '../../redux/cardsSlice.js';
 
 const MainScreen = () => {
   const data = useSelector(selectCards);
 
-  const [pagination, setPagination] = useState({
-    page: 1,
-    limit: 4,
-  });
+  const limit = useSelector(selectLimit);
+  const page = useSelector(selectPage);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCard(pagination));
-  }, [dispatch, pagination]);
+    dispatch(fetchCard({ page, limit }));
+  }, [dispatch, limit, page]);
 
   const handleLoadMore = () => {
-    const limit = (pagination.limit += 4);
-    setPagination({ ...pagination, limit });
+    dispatch(addLimit());
   };
 
   const favorite = useSelector(selectFavorite);
@@ -35,7 +41,7 @@ const MainScreen = () => {
     dispatch(addFavorite(advert));
   };
 
-  const endOfCard = data.length % pagination.limit === 0;
+  const endOfCard = data.length % limit === 0;
 
   return (
     <div className={styles.container}>

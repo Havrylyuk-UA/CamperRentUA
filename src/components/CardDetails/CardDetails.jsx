@@ -1,16 +1,35 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { selectDetails, selectIsLoading } from '../../redux/selectors';
 import styles from './CardDetails.module.scss';
 import sprite from '../../assets/sprite.svg';
-import { useSelector } from 'react-redux';
-import { selectDetails, selectIsLoading } from '../../redux/selectors';
 
 const CardDetails = () => {
   const car = useSelector(selectDetails);
-
   const loading = useSelector(selectIsLoading);
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate(-1);
+  };
+
+  const handleKeyDown = e => {
+    if (e.key === 'Escape') {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
-    <div className={styles.modal_backdrop}>
-      <div className={styles.card_container}>
+    <div className={styles.backdrop} onClick={handleClose}>
+      <div className={styles.card_container} onClick={e => e.stopPropagation()}>
         {loading ? (
           'Loading....'
         ) : (
@@ -18,7 +37,12 @@ const CardDetails = () => {
             <div className={styles.about}>
               <div className={styles.head}>
                 <p>{car.name}</p>
-                <svg className={styles.cross} width="32" height="32">
+                <svg
+                  className={styles.cross}
+                  width="32"
+                  height="32"
+                  onClick={handleClose}
+                >
                   <use xlinkHref={`${sprite}#icon-cross`}></use>
                 </svg>
               </div>
@@ -52,7 +76,6 @@ const CardDetails = () => {
                 <p>{car.description}</p>
               </div>
             </div>
-
             <div className={styles.btn}>
               <button>Features</button>
               <button>Reviews</button>

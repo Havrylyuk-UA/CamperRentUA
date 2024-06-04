@@ -131,6 +131,7 @@
       flex-wrap: wrap;
       max-width: 526px;
       height: 96px;
+      overflow: hidden;
 
       gap: 8px;
       margin-bottom: 24px;
@@ -178,6 +179,63 @@
       }
 
       .icon_ac {
+        stroke: #000;
+      }
+
+      .icon_freezer {
+        fill: none;
+        stroke: #000;
+      }
+
+      .icon_toilet {
+        stroke: #000;
+      }
+
+      .icon_cd {
+        fill: none;
+        stroke: #000;
+      }
+
+      .icon_hob {
+        fill: none;
+        stroke: #000;
+      }
+
+      .icon_gas {
+        stroke: #000;
+      }
+
+      .icon_shower {
+        fill: none;
+        stroke: #000;
+      }
+
+      .icon_route {
+        stroke: #000;
+      }
+
+      .icon_radio {
+        fill: none;
+        stroke: #000;
+      }
+
+      .icon_conditioner {
+        fill: none;
+        stroke: #000;
+      }
+
+      .icon_microwave {
+        fill: none;
+        stroke: #000;
+      }
+
+      .icon_water {
+        fill: none;
+        stroke: #000;
+      }
+
+      .icon_tv {
+        fill: none;
         stroke: #000;
       }
     }
