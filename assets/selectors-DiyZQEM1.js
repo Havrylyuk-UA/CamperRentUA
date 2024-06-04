@@ -1,0 +1,1 @@
+const a="/CamperRentUA/assets/sprite-WJ0KrafU.svg",e=s=>s.cards.cards,t=s=>s.cards.isLoading,c=s=>s.cards.details,r=s=>s.cards.favorite,i=s=>s.cards.limit,d=s=>s.cards.page;export{i as a,d as b,r as c,a as d,c as e,t as f,e as s};
