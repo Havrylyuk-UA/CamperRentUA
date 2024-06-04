@@ -123,23 +123,44 @@
       color: $dark-light;
     }
 
-    .btn {
-      display: flex;
-      gap: 40px;
+    .tabs {
+      .tabList {
+        display: flex;
+        border-bottom: 1px solid #e0e0e0;
+      }
 
-      border: none;
-      background-color: inherit;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 120%;
-      width: 85px;
-      height: 24px;
-      margin-bottom: 24px;
-    }
+      .tab {
+        padding: 16px 24px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #333;
+        border: none;
+        background: none;
+        outline: none;
+        position: relative;
 
-    .line {
-      width: 902px;
-      border: 1px solid rgba(16, 24, 40, 0.2);
+        &:hover {
+          color: #000;
+        }
+      }
+
+      .active {
+        color: #000;
+      }
+
+      .active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: red;
+      }
+
+      .tabContent {
+        padding: 16px;
+      }
     }
   }
 }

@@ -1,31 +1,57 @@
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { selectDetails, selectIsLoading } from '../../redux/selectors';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import {
+  selectDetails,
+  selectIsLoading,
+  selectOpen,
+} from '../../redux/selectors';
+import { closeDetails } from '../../redux/cardsSlice';
 import styles from './CardDetails.module.scss';
 import sprite from '../../assets/sprite.svg';
 
 const CardDetails = () => {
   const car = useSelector(selectDetails);
   const loading = useSelector(selectIsLoading);
+  const isOpen = useSelector(selectOpen);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleClose = () => {
-    navigate(-1);
+  const [activeTab, setActiveTab] = useState('features');
+
+  const handleTabClick = tab => {
+    setActiveTab(tab);
   };
 
-  const handleKeyDown = e => {
-    if (e.key === 'Escape') {
-      handleClose();
+  const currentLocation = useLocation();
+
+  const handleClose = () => {
+    dispatch(closeDetails());
+    if (currentLocation.pathname.startsWith('/catalog')) {
+      navigate('/catalog');
+    }
+    if (currentLocation.pathname.startsWith('/favorites')) {
+      navigate('/favorites');
     }
   };
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
+    const handleEscape = event => {
+      if (event.key === 'Escape') {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keydown', handleEscape);
     };
   }, []);
+
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className={styles.backdrop} onClick={handleClose}>
@@ -76,11 +102,31 @@ const CardDetails = () => {
                 <p>{car.description}</p>
               </div>
             </div>
-            <div className={styles.btn}>
-              <button>Features</button>
-              <button>Reviews</button>
+            <div className={styles.tabs}>
+              <div className={styles.tabList}>
+                <Link
+                  to="features"
+                  className={`${styles.tab} ${
+                    activeTab === 'features' ? styles.active : ''
+                  }`}
+                  onClick={() => handleTabClick('features')}
+                >
+                  Features
+                </Link>
+                <Link
+                  to="reviews"
+                  className={`${styles.tab} ${
+                    activeTab === 'reviews' ? styles.active : ''
+                  }`}
+                  onClick={() => handleTabClick('reviews')}
+                >
+                  Reviews
+                </Link>
+              </div>
+              <div className={styles.tabContent}>
+                <Outlet />
+              </div>
             </div>
-            <p className={styles.line}></p>
           </>
         )}
       </div>

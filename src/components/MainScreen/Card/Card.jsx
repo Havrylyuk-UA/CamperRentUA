@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCardById } from '../../../redux/operations';
 import clsx from 'clsx';
 import { selectFavorite } from '../../../redux/selectors';
+import { openDetails } from '../../../redux/cardsSlice';
 
 const Card = ({ camper, handleToggleFavorite }) => {
   const renderCategoryItem = (svg, text) => (
@@ -19,6 +20,8 @@ const Card = ({ camper, handleToggleFavorite }) => {
   const dispatch = useDispatch();
 
   const favorite = useSelector(selectFavorite);
+
+  const openDetailsWindow = () => dispatch(openDetails());
 
   const isFavorite = favorite.some(item => item._id === camper._id);
 
@@ -100,7 +103,11 @@ const Card = ({ camper, handleToggleFavorite }) => {
             className={styles.btn}
             onClick={() => getDetails(camper._id)}
           >
-            <NavLink to={`${camper._id}`} className={styles.btn_link}>
+            <NavLink
+              to={`${camper._id}`}
+              className={styles.btn_link}
+              onClick={openDetailsWindow}
+            >
               Show more
             </NavLink>
           </button>
