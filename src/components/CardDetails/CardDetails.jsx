@@ -17,7 +17,7 @@ const CardDetails = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState('features');
+  const [activeTab, setActiveTab] = useState('');
 
   const handleTabClick = tab => {
     setActiveTab(tab);
