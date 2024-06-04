@@ -1,0 +1,33 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.container {
+  margin-top: 44px;
+  .head {
+    border-bottom: 1px solid rgba(16, 24, 40, 0.1);
+    padding-bottom: 24px;
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+  }
+
+  .desc {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    margin-top: 24px;
+  }
+
+  .desc_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 133%;
+  }
+}

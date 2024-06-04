@@ -1,0 +1,115 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 526px;
+
+  gap: 8px;
+  margin-bottom: 24px;
+
+  .cat_item {
+    padding: 12px 18px;
+    border-radius: 100px;
+
+    background-color: $grey;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+
+    .icon_adults {
+      stroke: #000;
+    }
+  }
+
+  .icon_automatic {
+    fill: none;
+
+    stroke: #000;
+  }
+
+  .icon_petrol {
+    stroke: #000;
+  }
+
+  .icon_kitchen {
+    fill: none;
+
+    stroke: #000;
+  }
+
+  .icon_beds {
+    fill: none;
+
+    stroke: #000;
+  }
+
+  .icon_ac {
+    stroke: #000;
+  }
+
+  .icon_freezer {
+    fill: none;
+    stroke: #000;
+  }
+
+  .icon_toilet {
+    stroke: #000;
+  }
+
+  .icon_cd {
+    fill: none;
+    stroke: #000;
+  }
+
+  .icon_hob {
+    fill: none;
+    stroke: #000;
+  }
+
+  .icon_gas {
+    stroke: #000;
+  }
+
+  .icon_shower {
+    fill: none;
+    stroke: #000;
+  }
+
+  .icon_route {
+    stroke: #000;
+  }
+
+  .icon_radio {
+    fill: none;
+    stroke: #000;
+  }
+
+  .icon_conditioner {
+    fill: none;
+    stroke: #000;
+  }
+
+  .icon_microwave {
+    fill: none;
+    stroke: #000;
+  }
+
+  .icon_water {
+    fill: none;
+    stroke: #000;
+  }
+
+  .icon_tv {
+    fill: none;
+    stroke: #000;
+  }
+}
