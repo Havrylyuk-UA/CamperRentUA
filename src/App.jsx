@@ -25,6 +25,10 @@ function App() {
             <Route path="reviews" element={<Reviews />} />
           </Route>
           <Route path="/favorites" element={<FavoritePage />} />
+          <Route path="/favorites/:cardId" element={<CardDetails />}>
+            <Route path="features" element={<Features />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
         </Route>
       </Routes>
     </Suspense>

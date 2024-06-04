@@ -30,7 +30,9 @@ export const cardSlice = createSlice({
       state.favorite = [...state.favorite, payload];
     },
     removeFavorite(state, { payload }) {
-      state.favorite = state.favorite.filter(camper => camper._id !== payload);
+      state.favorite = state.favorite.filter(
+        camper => camper._id !== payload._id
+      );
     },
   },
   extraReducers: builder => {

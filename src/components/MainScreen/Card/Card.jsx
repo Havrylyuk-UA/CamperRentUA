@@ -1,10 +1,12 @@
 import styles from './Card.module.scss';
 import sprite from '../../../assets/sprite.svg';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCardById } from '../../../redux/operations';
+import clsx from 'clsx';
+import { selectFavorite } from '../../../redux/selectors';
 
-const Card = ({ camper }) => {
+const Card = ({ camper, handleToggleFavorite }) => {
   const renderCategoryItem = (svg, text) => (
     <div className={styles.cat_item}>
       <svg className={styles[`icon_${svg}`]} width="20" height="20">
@@ -15,6 +17,10 @@ const Card = ({ camper }) => {
   );
 
   const dispatch = useDispatch();
+
+  const favorite = useSelector(selectFavorite);
+
+  const isFavorite = favorite.some(item => item._id === camper._id);
 
   const getDetails = cardId => {
     dispatch(getCardById(cardId));
@@ -32,7 +38,14 @@ const Card = ({ camper }) => {
           </div>
           <div className={styles.price}>
             <p>€{camper.price}</p>
-            <svg className={styles.heart} width="24" height="24">
+            <svg
+              className={clsx(styles.heart, {
+                [styles.heart_active]: isFavorite,
+              })}
+              width="24"
+              height="24"
+              onClick={handleToggleFavorite}
+            >
               <use xlinkHref={`${sprite}#icon-heart`}></use>
             </svg>
           </div>

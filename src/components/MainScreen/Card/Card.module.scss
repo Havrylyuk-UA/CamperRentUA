@@ -58,12 +58,24 @@
       .heart {
         fill: none;
         stroke: #000;
-
         cursor: pointer;
+        transition: fill 0.3s ease, stroke 0.3s ease, transform 0.3s ease;
 
-        &:active {
-          fill: red;
-          stroke: red;
+        &:hover,
+        &:focus {
+          transform: scale(1.1);
+        }
+      }
+
+      .heart_active {
+        cursor: pointer;
+        fill: red;
+        stroke: red;
+        transition: fill 0.3s ease, stroke 0.3s ease, transform 0.3s ease;
+
+        &:hover,
+        &:focus {
+          transform: scale(1.1);
         }
       }
     }
