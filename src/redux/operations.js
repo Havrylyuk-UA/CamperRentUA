@@ -6,10 +6,22 @@ const mockapi = import.meta.env.VITE_MOCKAPI;
 axios.defaults.baseURL = `https://${mockapi}.mockapi.io/api`;
 
 export const fetchCard = createAsyncThunk(
-  'advert/fetchAll',
+  'advert/fetchCard',
   async ({ page, limit }, thunkAPI) => {
     try {
       const response = await axios.get(`/advert?page=${page}&limit=${limit}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchAllCard = createAsyncThunk(
+  'advert/fetchAll',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`/advert`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

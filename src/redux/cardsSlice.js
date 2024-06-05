@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCard, getCardById, getCardByType } from './operations';
+import {
+  fetchAllCard,
+  fetchCard,
+  getCardById,
+  getCardByType,
+} from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -12,6 +17,7 @@ const handleRejected = (state, action) => {
 
 const initialState = {
   cards: [],
+  allCards: [],
   favorite: [],
   details: {},
   isLoading: false,
@@ -26,7 +32,10 @@ export const cardSlice = createSlice({
   initialState,
   reducers: {
     addLimit(state) {
-      state.limit += 4;
+      state.page += 1;
+    },
+    goToFirst(state) {
+      state.page = 1;
     },
     openDetails(state) {
       state.isOpen = true;
@@ -66,7 +75,14 @@ export const cardSlice = createSlice({
         state.error = null;
         state.cards = action.payload;
       })
-      .addCase(getCardByType.rejected, handleRejected);
+      .addCase(getCardByType.rejected, handleRejected)
+      .addCase(fetchAllCard.pending, handlePending)
+      .addCase(fetchAllCard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.allCards = action.payload;
+      })
+      .addCase(fetchAllCard.rejected, handleRejected);
   },
 });
 
@@ -76,6 +92,7 @@ export const {
   addLimit,
   closeDetails,
   openDetails,
+  goToFirst,
 } = cardSlice.actions;
 
 export default cardSlice.reducer;

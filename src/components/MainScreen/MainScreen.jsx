@@ -9,10 +9,11 @@ import {
   selectPage,
 } from '../../redux/selectors.js';
 import { useEffect } from 'react';
-import { fetchCard } from '../../redux/operations.js';
+import { fetchCard, fetchAllCard } from '../../redux/operations.js';
 import {
   addFavorite,
   addLimit,
+  goToFirst,
   removeFavorite,
 } from '../../redux/cardsSlice.js';
 
@@ -25,11 +26,16 @@ const MainScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchAllCard());
     dispatch(fetchCard({ page, limit }));
   }, [dispatch, limit, page]);
 
   const handleLoadMore = () => {
     dispatch(addLimit());
+  };
+
+  const handleGoFirst = () => {
+    dispatch(goToFirst());
   };
 
   const favorite = useSelector(selectFavorite);
@@ -54,7 +60,10 @@ const MainScreen = () => {
           />
         ))}
       </div>
-      {endOfCard && <LoadMoreBtn onClick={handleLoadMore} />}
+      <LoadMoreBtn
+        name={endOfCard ? 'Load more' : 'Back to start'}
+        onClick={endOfCard ? handleLoadMore : handleGoFirst}
+      />
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import styles from './LoadMoreBtn.module.scss';
 
-const LoadMoreBtn = ({ onClick }) => {
+const LoadMoreBtn = ({ onClick, name }) => {
   return (
     <button className={styles.btn} onClick={onClick}>
-      Load more
+      {name}
     </button>
   );
 };

@@ -13,7 +13,9 @@ const Reviews = () => {
         {advert.reviews.map(camper => (
           <div key={camper.reviewer_name} className={styles.reviews_item}>
             <div className={styles.head}>
-              <div className={styles.circle}>A</div>
+              <div className={styles.circle}>
+                {camper.reviewer_name.charAt(0)}
+              </div>
               <div className={styles.name_rat}>
                 <p className={styles.name}>{camper.reviewer_name}</p>
                 <div className={styles.rating_cont}>

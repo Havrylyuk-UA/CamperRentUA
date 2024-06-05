@@ -7,6 +7,7 @@ import carsReducer from './cardsSlice';
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['cards'],
 };
 
 const persistedCarsReducer = persistReducer(persistConfig, carsReducer);
