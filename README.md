@@ -1,29 +1,16 @@
-CamperRentUA
+CamperRentUA is a web application for renting campers in Ukraine. This project provides
+a convenient platform for searching, booking, and renting campers, allowing
+users to enjoy traveling in comfort.
 
-Опис CamperRentUA - веб-додаток для оренди кемперів в Україні. Цей проєкт надає
-зручну платформу для пошуку, бронювання та оренди кемперів, дозволяючи
-користувачам насолоджуватися подорожами з комфортом.
+Functionality:
+1) Campervan search: Easy search for available campers by various
+criteria.
+2) Booking: Ability to book a campervan online. 
+3) Campervan overview: Detailed information and photos of each camper.
+4) User reviews: Feedback from users who have already rented a camper. 
 
-Функціонал Пошук кемперів: Легкий пошук доступних кемперів за різними
-критеріями. Бронювання: Можливість бронювання кемпера онлайн. Огляд кемперів:
-Детальна інформація та фотографії кожного кемпера. Користувацькі відгуки:
-Відгуки користувачів, які вже орендували кемпер. Технології Проєкт створений за
-допомогою наступних технологій:
-
-JavaScript React SCSS Vite Встановлення Клонуйте репозиторій: sh Copy code git
-clone https://github.com/Havrylyuk-UA/CamperRentUA.git Перейдіть у директорію
-проєкту: sh Copy code cd CamperRentUA Встановіть залежності: sh Copy code npm
-install Створіть файл .env на основі .env.example та заповніть необхідні змінні.
-Запустіть проєкт: sh Copy code npm run dev Використання Перейдіть до
-http://localhost:3000 у вашому браузері, щоб відкрити додаток.
-
-Внесок Форкніть цей репозиторій. Створіть нову гілку: sh Copy code git checkout
--b feature/YourFeature Внесіть свої зміни та закомітьте їх: sh Copy code git
-commit -m 'Add some feature' Запуште гілку: sh Copy code git push origin
-feature/YourFeature Відкрийте Pull Request. Ліцензія Цей проєкт ліцензовано під
-ліцензією MIT. Деталі можна знайти у файлі LICENSE.
-
-Зворотній зв'язок Якщо у вас виникли питання або пропозиції, будь ласка,
-звертайтесь до Havrylyuk-UA.
-
-© 2024 CamperRentUA. Всі права захищені.
+Technologies The project was created with the help of the following technologies:
+- JavaScript
+- React
+- SCSS
+- Vite
