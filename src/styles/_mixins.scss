@@ -1,17 +1,3 @@
-@import './breakpoints';
-
-@mixin media-rules($screen) {
-  @if $screen == tablet {
-    @media screen and (min-width: $tablet) {
-      @content;
-    }
-  } @else if $screen == desktop {
-    @media screen and (min-width: $desktop) {
-      @content;
-    }
-  }
-}
-
 @mixin appear-animation-opacity($duration: 0.25s) {
   animation: appear $duration ease forwards;
 
