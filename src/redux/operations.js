@@ -41,11 +41,15 @@ export const getCardById = createAsyncThunk(
   }
 );
 
-export const getCardByType = createAsyncThunk(
+export const getCardByFilter = createAsyncThunk(
   'advert/getByType',
   async (filter, thunkAPI) => {
+    console.log(filter);
     try {
-      const response = await axios.get(`/advert?search=${filter}`);
+      const response = await axios.get(`/advert`, {
+        params: filter,
+      });
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -1,5 +1,4 @@
 export const selectCards = state => state.cards.cards;
-export const selectFilter = state => state.filter.filter;
 export const selectIsLoading = state => state.cards.isLoading;
 export const selectError = state => state.cards.error;
 export const selectDetails = state => state.cards.details;
@@ -8,3 +7,6 @@ export const selectLimit = state => state.cards.limit;
 export const selectPage = state => state.cards.page;
 export const selectOpen = state => state.cards.isOpen;
 export const selectAllCards = state => state.cards.allCards;
+export const selectLocation = state => state.filter.location;
+export const selectForm = state => state.filter.form;
+export const selectFilterDetails = state => state.filter.details;

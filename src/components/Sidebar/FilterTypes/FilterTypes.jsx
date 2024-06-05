@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import styles from './FilterTypes.module.scss';
 import sprite from '../../../assets/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { setFilterForm } from '../../../redux/filterSlice';
 
 const FilterTypes = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
+  const dispatch = useDispatch();
+
   const handleRadioChange = value => {
     setSelectedOption(value);
+    dispatch(setFilterForm(value));
   };
 
   return (
@@ -16,13 +21,13 @@ const FilterTypes = () => {
       <form>
         <label
           className={`${styles.label} ${
-            selectedOption === 'van' && styles.checked
+            selectedOption === 'panelTruck' && styles.checked
           }`}
         >
           <input
             type="radio"
-            onChange={() => handleRadioChange('van')}
-            checked={selectedOption === 'van'}
+            onChange={() => handleRadioChange('panelTruck')}
+            checked={selectedOption === 'panelTruck'}
           />
           <svg className={styles.vehicle} width="40" height="28">
             <use xlinkHref={`${sprite}#icon-camper`}></use>
@@ -31,13 +36,13 @@ const FilterTypes = () => {
         </label>
         <label
           className={`${styles.label} ${
-            selectedOption === 'fully' && styles.checked
+            selectedOption === 'fullyIntegrated' && styles.checked
           }`}
         >
           <input
             type="radio"
-            onChange={() => handleRadioChange('fully')}
-            checked={selectedOption === 'fully'}
+            onChange={() => handleRadioChange('fullyIntegrated')}
+            checked={selectedOption === 'fullyIntegrated'}
           />
           <svg className={styles.vehicle} width="40" height="28">
             <use xlinkHref={`${sprite}#icon-camper-1`}></use>

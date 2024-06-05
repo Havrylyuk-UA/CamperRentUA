@@ -1,17 +1,27 @@
 import styles from './Location.module.scss';
 import sprite from '../../../assets/sprite.svg';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import {} from '../../../redux/operations';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAllCards } from '../../../redux/selectors';
+import { setFilterLocation } from '../../../redux/filterSlice';
 
 const Location = () => {
   const advert = useSelector(selectAllCards);
-  const [location, setLocation] = useState(advert);
+  const dispatch = useDispatch();
 
-  const uniqueLocations = location
+  const uniqueLocations = advert
     .map(item => item.location)
     .filter((value, index, self) => self.indexOf(value) === index);
+
+  const handleFilterLocation = e => {
+    const location = e.target.value;
+
+    if (location.trim() !== '') {
+      if (!uniqueLocations.some(item => item === location)) {
+        return alert('Sorry, there are no campers in this location');
+      }
+      dispatch(setFilterLocation(location));
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -26,6 +36,7 @@ const Location = () => {
           name="location"
           placeholder="Choose your city"
           list="locationSuggestions"
+          onBlur={e => handleFilterLocation(e)}
         />
         <datalist id="locationSuggestions">
           {uniqueLocations.map((location, index) => (

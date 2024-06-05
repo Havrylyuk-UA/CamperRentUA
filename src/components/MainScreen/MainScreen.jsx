@@ -3,6 +3,7 @@ import Card from './Card/Card.jsx';
 import styles from './MainScreen.module.scss';
 import LoadMoreBtn from './ShowMoreBtn/LoadMoreBtn.jsx';
 import {
+  selectAllCards,
   selectCards,
   selectFavorite,
   selectLimit,
@@ -13,13 +14,12 @@ import { fetchCard, fetchAllCard } from '../../redux/operations.js';
 import {
   addFavorite,
   addLimit,
-  goToFirst,
   removeFavorite,
 } from '../../redux/cardsSlice.js';
 
 const MainScreen = () => {
   const data = useSelector(selectCards);
-
+  const allLimit = useSelector(selectAllCards);
   const limit = useSelector(selectLimit);
   const page = useSelector(selectPage);
 
@@ -34,10 +34,6 @@ const MainScreen = () => {
     dispatch(addLimit());
   };
 
-  const handleGoFirst = () => {
-    dispatch(goToFirst());
-  };
-
   const favorite = useSelector(selectFavorite);
 
   const handleToggleFavorite = advert => {
@@ -47,7 +43,7 @@ const MainScreen = () => {
     dispatch(addFavorite(advert));
   };
 
-  const endOfCard = data.length % limit === 0;
+  const endOfCard = data.length % allLimit.length !== 0;
 
   return (
     <div className={styles.container}>
@@ -60,10 +56,7 @@ const MainScreen = () => {
           />
         ))}
       </div>
-      <LoadMoreBtn
-        name={endOfCard ? 'Load more' : 'Back to start'}
-        onClick={endOfCard ? handleLoadMore : handleGoFirst}
-      />
+      {endOfCard && <LoadMoreBtn name={'Load more'} onClick={handleLoadMore} />}
     </div>
   );
 };

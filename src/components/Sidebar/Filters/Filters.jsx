@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import styles from './Filters.module.scss';
 import sprite from '../../../assets/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { setFilterDetails } from '../../../redux/filterSlice';
 
 const Filters = () => {
   const [checkedItems, setCheckedItems] = useState({});
+
+  const dispatch = useDispatch();
 
   const handleCheckboxChange = e => {
     const { name, checked } = e.target;
@@ -11,6 +15,7 @@ const Filters = () => {
       ...prevCheckedItems,
       [name]: checked,
     }));
+    dispatch(setFilterDetails(name));
   };
 
   return (

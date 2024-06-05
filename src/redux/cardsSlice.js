@@ -3,7 +3,7 @@ import {
   fetchAllCard,
   fetchCard,
   getCardById,
-  getCardByType,
+  getCardByFilter,
 } from './operations';
 
 const handlePending = state => {
@@ -32,10 +32,7 @@ export const cardSlice = createSlice({
   initialState,
   reducers: {
     addLimit(state) {
-      state.page += 1;
-    },
-    goToFirst(state) {
-      state.page = 1;
+      state.limit += 4;
     },
     openDetails(state) {
       state.isOpen = true;
@@ -69,13 +66,14 @@ export const cardSlice = createSlice({
         state.details = action.payload;
       })
       .addCase(getCardById.rejected, handleRejected)
-      .addCase(getCardByType.pending, handlePending)
-      .addCase(getCardByType.fulfilled, (state, action) => {
+      .addCase(getCardByFilter.pending, handlePending)
+      .addCase(getCardByFilter.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        state.allCards = action.payload;
         state.cards = action.payload;
       })
-      .addCase(getCardByType.rejected, handleRejected)
+      .addCase(getCardByFilter.rejected, handleRejected)
       .addCase(fetchAllCard.pending, handlePending)
       .addCase(fetchAllCard.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -92,7 +90,6 @@ export const {
   addLimit,
   closeDetails,
   openDetails,
-  goToFirst,
 } = cardSlice.actions;
 
 export default cardSlice.reducer;
