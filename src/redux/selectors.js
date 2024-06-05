@@ -10,3 +10,4 @@ export const selectAllCards = state => state.cards.allCards;
 export const selectLocation = state => state.filter.location;
 export const selectForm = state => state.filter.form;
 export const selectFilterDetails = state => state.filter.details;
+export const selectBtn = state => state.cards.showBtn;

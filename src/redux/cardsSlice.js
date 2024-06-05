@@ -24,7 +24,7 @@ const initialState = {
   limit: 4,
   page: 1,
   isOpen: false,
-  error: null,
+  showBtn: true,
 };
 
 export const cardSlice = createSlice({
@@ -54,6 +54,7 @@ export const cardSlice = createSlice({
       .addCase(fetchCard.pending, handlePending)
       .addCase(fetchCard.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.showBtn = true;
         state.error = null;
         state.cards = action.payload;
       })
@@ -62,6 +63,7 @@ export const cardSlice = createSlice({
       .addCase(getCardById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isOpen = true;
+
         state.error = null;
         state.details = action.payload;
       })
@@ -69,8 +71,8 @@ export const cardSlice = createSlice({
       .addCase(getCardByFilter.pending, handlePending)
       .addCase(getCardByFilter.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.showBtn = false;
         state.error = null;
-        state.allCards = action.payload;
         state.cards = action.payload;
       })
       .addCase(getCardByFilter.rejected, handleRejected)

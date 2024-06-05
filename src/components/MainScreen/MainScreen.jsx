@@ -4,6 +4,7 @@ import styles from './MainScreen.module.scss';
 import LoadMoreBtn from './ShowMoreBtn/LoadMoreBtn.jsx';
 import {
   selectAllCards,
+  selectBtn,
   selectCards,
   selectFavorite,
   selectLimit,
@@ -22,6 +23,7 @@ const MainScreen = () => {
   const allLimit = useSelector(selectAllCards);
   const limit = useSelector(selectLimit);
   const page = useSelector(selectPage);
+  const btn = useSelector(selectBtn);
 
   const dispatch = useDispatch();
 
@@ -56,7 +58,9 @@ const MainScreen = () => {
           />
         ))}
       </div>
-      {endOfCard && <LoadMoreBtn name={'Load more'} onClick={handleLoadMore} />}
+      {btn && endOfCard && (
+        <LoadMoreBtn name={'Load more'} onClick={handleLoadMore} />
+      )}
     </div>
   );
 };

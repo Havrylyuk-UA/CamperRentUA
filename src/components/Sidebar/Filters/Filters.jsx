@@ -11,6 +11,7 @@ const Filters = () => {
 
   const handleCheckboxChange = e => {
     const { name, checked } = e.target;
+
     setCheckedItems(prevCheckedItems => ({
       ...prevCheckedItems,
       [name]: checked,
@@ -25,9 +26,15 @@ const Filters = () => {
       <p className={styles.line}></p>
       <form>
         <label
-          className={`${styles.label} ${checkedItems.ac && styles.checked}`}
+          className={`${styles.label} ${
+            checkedItems.airConditioner && styles.checked
+          }`}
         >
-          <input type="checkbox" name="ac" onChange={handleCheckboxChange} />
+          <input
+            type="checkbox"
+            name="airConditioner"
+            onChange={handleCheckboxChange}
+          />
           <svg className={styles.filter_equipment} width="32" height="32">
             <use xlinkHref={`${sprite}#icon-ac`}></use>
           </svg>
@@ -64,9 +71,9 @@ const Filters = () => {
           Kitchen
         </label>
         <label
-          className={`${styles.label} ${checkedItems.tv && styles.checked}`}
+          className={`${styles.label} ${checkedItems.TV && styles.checked}`}
         >
-          <input type="checkbox" name="tv" onChange={handleCheckboxChange} />
+          <input type="checkbox" name="TV" onChange={handleCheckboxChange} />
           <svg className={styles.filter_equipment} width="32" height="32">
             <use xlinkHref={`${sprite}#icon-tv`}></use>
           </svg>

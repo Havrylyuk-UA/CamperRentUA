@@ -16,7 +16,6 @@ export const filterSlice = createSlice({
     },
     setFilterDetails(state, action) {
       state.details = [...state.details, action.payload];
-      console.log(state.details);
     },
   },
 });

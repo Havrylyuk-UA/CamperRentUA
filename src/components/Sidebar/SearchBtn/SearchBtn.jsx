@@ -15,6 +15,7 @@ const SearchBtn = () => {
 
   const handleSearch = () => {
     const filter = {};
+    const equipment = [];
 
     if (location) {
       filter.location = location;
@@ -28,16 +29,18 @@ const SearchBtn = () => {
       if (detail === 'automatic') {
         filter.transmission = detail;
       } else {
-        filter.details = {
-          ...filter.details,
-          [detail]: 1,
-        };
+        equipment.push(detail);
       }
     });
 
-    if (!form && !location && !details) {
+    if (!form && !location && details.length === 0) {
       return alert('You need to select at least one filter');
     }
+
+    if (equipment.length > 0) {
+      return dispatch(getCardByFilter({ filter, equipment }));
+    }
+
     dispatch(getCardByFilter(filter));
   };
 
